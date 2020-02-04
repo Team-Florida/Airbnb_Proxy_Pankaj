@@ -16,9 +16,13 @@ const clientPath = '../client';
 app.use(express.static(path.join(__dirname, clientPath)));
 
 app.get('/carousel', (req, res) => {
-  console.log('First')
   axios.get('http://localhost:2500/bundle.js')
   .then(response => res.send(response.data))
-})
+});
+
+app.get('/checkout', (req, res) => {
+  axios.get('http://localhost:2000/bundle.js')
+  .then(response => res.send(response.data))
+});
 
 app.listen(PORT, () => console.log(`Server listening to PORT: ${PORT}`))
